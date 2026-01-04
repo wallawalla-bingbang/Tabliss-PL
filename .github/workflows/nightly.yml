@@ -97,7 +97,7 @@ jobs:
             ### Download Instructions:
 
             1. Download the version that corresponds to your browser
-            2. Follow the installation instructions (while skipping download steps) in [the installation guide](INSTALL.md#step-2-install-the-extension-in-your-browser)
+            2. Follow the installation instructions (while skipping download steps) in [the installation guide](https://github.com/BookCatKid/TablissNG/blob/main/INSTALL.md#step-2-install-the-extension-in-your-browser)
             3. Dive into the newest features and improvements!
 
             ### Please Note:
@@ -119,7 +119,7 @@ jobs:
             Your active participation and feedback are key to continuous improvement. Enjoy exploring the latest features!
           files: |
             artifacts/*/tabliss-*-nightly.zip
-          draft: true
+          draft: false
           prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
