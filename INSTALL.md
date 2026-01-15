@@ -34,7 +34,7 @@
 
 #### Firefox
 
-1. Go to `about\:addons`
+1. Go to `about:addons`
 2. Click the gear icon
 3. Click "Install Add-on from File"
 4. Select the .zip or .xpi file you downloaded
