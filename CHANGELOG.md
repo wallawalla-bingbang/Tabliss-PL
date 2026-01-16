@@ -6,11 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 I also attempt to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
-## [Unreleased]
+## [1.6.1] - 1/15/2026 | New logos, better caching, a Trello widget, Bing wallpapers and more!
+
+Finally changed the logo to something different from Tabliss's logo! This release includes a lot of community contributions, so thanks a ton to everyone who helped out!
 
 ### Added
-
-- feat(trello): added Trello integration (#73). [7e3c9b9](https://github.com/John-Ling/TablissNG/commit/7e3c9b9968dd6639a3f985e73f1d236b30c39916), [62e8b5f5](https://github.com/BookCatKid/TablissNG/commit/62e8b5f5)
 
 - feat: implement favicon changing (#85). [44bc62ce](https://github.com/BookCatKid/TablissNG/commit/44bc62ce)
 
@@ -19,6 +19,8 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 - feat: add opentype font features parsing support. [2f34128d](https://github.com/BookCatKid/TablissNG/commit/2f34128d)
 
 - Enable better offline support with workbox (#66). [b4c5f165](https://github.com/BookCatKid/TablissNG/commit/b4c5f165)
+
+- feat(trello): added Trello integration (#73). [7e3c9b9](https://github.com/John-Ling/TablissNG/commit/7e3c9b9968dd6639a3f985e73f1d236b30c39916), [62e8b5f5](https://github.com/BookCatKid/TablissNG/commit/62e8b5f5)
 
 ### Fixed
 
