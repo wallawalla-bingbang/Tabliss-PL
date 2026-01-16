@@ -115,6 +115,10 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: tabliss-chromium
+      - name: Remove key field from manifest
+        run: |
+          jq 'del(.key)' manifest.json > manifest.tmp.json
+          mv manifest.tmp.json manifest.json
       - name: Create Release ZIP
         run: zip -r addon.zip ./*
       - uses: birchill/edge-addon-upload@v1.1.0
