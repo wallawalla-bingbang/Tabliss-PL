@@ -78,15 +78,32 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
               navigationStyle: evt.target.value as
                 | "drill-down"
                 | "expand-collapse"
-                | "auto-expanded",
+                | "auto-expanded"
+                | "quick-links",
             })
           }
         >
           <option value="drill-down">Drill-down navigation</option>
           <option value="expand-collapse">Expandable folders</option>
           <option value="auto-expanded">Auto-expanded tree</option>
+          <option value="quick-links">Quick links style</option>
         </select>
       </label>
+
+      {data.navigationStyle === "quick-links" && (
+        <label>
+          Columns
+          <input
+            type="number"
+            min="1"
+            max="10"
+            value={data.columns || 1}
+            onChange={(evt) =>
+              setData({ ...data, columns: parseInt(evt.target.value, 10) })
+            }
+          />
+        </label>
+      )}
 
       {data.navigationStyle === "expand-collapse" && (
         <label>

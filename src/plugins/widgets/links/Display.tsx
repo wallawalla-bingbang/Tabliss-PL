@@ -56,7 +56,7 @@ type Props = Link & {
   onLinkClick?: () => void;
 };
 
-const Display: FC<Props> = ({
+export const Display: FC<Props> = ({
   icon,
   iconSize,
   IconString,

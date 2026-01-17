@@ -1,15 +1,21 @@
 import React, { FC, ReactNode, useEffect, useState } from "react";
 import { defaultData, Props } from "./types";
 import "./Bookmarks.sass";
+import "../links/Links.sass";
 import Icon from "../../../views/shared/icons/Icon";
 import { BookmarkTreeNode } from "./types";
 import { cleanTitle, truncateText } from "../topSites/TopSites";
+import { Display } from "../links/Display";
 
 type NodeProps = {
   node: BookmarkTreeNode;
   depth: number;
   wrap: boolean;
-  navigationStyle: "drill-down" | "expand-collapse" | "auto-expanded";
+  navigationStyle:
+    | "drill-down"
+    | "expand-collapse"
+    | "auto-expanded"
+    | "quick-links";
   onFolderClick?: (folderId: string) => void;
   iconProvider: string;
   shortNames: boolean;
@@ -82,7 +88,7 @@ const Node: FC<NodeProps> = ({
   const handleClick = () => {
     if (!isFolder) return;
 
-    if (navigationStyle === "drill-down") {
+    if (navigationStyle === "drill-down" || navigationStyle === "quick-links") {
       onFolderClick?.(node.id);
     } else if (navigationStyle === "expand-collapse") {
       if (rememberExpanded && setExpandedFolders) {
@@ -114,6 +120,21 @@ const Node: FC<NodeProps> = ({
 
   // Determine if we should add the 'no-rotate' class for auto-expanded mode
   const folderClass = `${cls} ${isExpanded ? "expanded" : ""} ${navigationStyle === "auto-expanded" ? "no-rotate" : ""}`;
+
+  if (navigationStyle === "quick-links") {
+    return (
+      <Display
+        id={node.id}
+        url={node.url || "#"}
+        name={displayTitle}
+        number={10} // Set to ten so that it doesn't display a hover title. Kinda hacky, but whatever
+        linkOpenStyle={false} // Just use default I guess
+        linksNumbered={false}
+        icon={node.url ? iconProvider : "folder"}
+        onLinkClick={handleClick}
+      />
+    );
+  }
 
   return (
     <>
@@ -301,6 +322,46 @@ const Bookmarks: FC<Props> = ({ data = defaultData, setData }) => {
           maxTextLength={data.maxTextLength}
           isRoot={true} // Mark as root node for auto-expanded mode
         />
+      ) : data.navigationStyle === "quick-links" ? (
+        <div className="quick-links-wrapper">
+          {navigationStack.length > 1 && (
+            <div
+              className="folder"
+              style={{
+                marginLeft: "0.25em",
+                cursor: "pointer",
+                marginBottom: "0.5em",
+              }}
+              onClick={navigateBack}
+            >
+              <Icon name="folder" />
+              ..
+            </div>
+          )}
+          <div
+            className="Links"
+            style={{
+              gridTemplateColumns: `repeat(${data.columns || 1}, 1fr)`,
+              textAlign: (data.columns || 1) > 1 ? "left" : "inherit",
+            }}
+          >
+            {navigationStack[navigationStack.length - 1]?.children?.map(
+              (item) => (
+                <Node
+                  key={item.id}
+                  node={item}
+                  depth={0}
+                  wrap={data.wrap}
+                  navigationStyle={data.navigationStyle}
+                  onFolderClick={navigateToFolder}
+                  iconProvider={data.iconProvider}
+                  shortNames={data.shortNames}
+                  maxTextLength={data.maxTextLength}
+                />
+              ),
+            )}
+          </div>
+        </div>
       ) : (
         <Node
           node={tree}
