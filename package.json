@@ -33,6 +33,7 @@
     "translations": "node ./scripts/translations.js",
     "deps:check": "npx npm-check",
     "deps:update": "npx npm-check -u",
+    "typecheck": "tsc --noEmit --skipLibCheck",
     "prepare": "husky"
   },
   "lint-staged": {
