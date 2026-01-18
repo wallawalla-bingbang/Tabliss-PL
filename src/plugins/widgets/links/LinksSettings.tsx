@@ -2,9 +2,16 @@ import React, { FC, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSavedReducer } from "../../../hooks";
 import Input from "./Input";
-import { addLink, removeLink, reorderLink, updateLink } from "./actions";
+import {
+  addLink,
+  removeLink,
+  reorderLink,
+  updateLink,
+  importLinks,
+} from "./actions";
 import { reducer } from "./reducer";
 import { Data, Link, Props, defaultCache, defaultData } from "./types";
+import ImportBookmarks from "./ImportBookmarks";
 
 const LinksSettings: FC<Props> = ({
   data = defaultData,
@@ -178,6 +185,8 @@ const LinksSettings: FC<Props> = ({
           />
         </button>
       </p>
+
+      <ImportBookmarks onImport={(links) => dispatch(importLinks(links))} />
     </div>
   );
 };
