@@ -275,7 +275,7 @@ const Bookmarks: FC<Props> = ({ data = defaultData, setData }) => {
 
   return (
     <div
-      className="Bookmarks"
+      className={`Bookmarks ${data.navigationStyle}`}
       style={{
         maxWidth: data.maxWidth + "em",
         maxHeight: data.maxHeight + "em",
