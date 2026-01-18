@@ -186,7 +186,9 @@ const LinksSettings: FC<Props> = ({
         </button>
       </p>
 
-      <ImportBookmarks onImport={(links) => dispatch(importLinks(links))} />
+      {BUILD_TARGET !== "web" && BUILD_TARGET !== "safari" && (
+        <ImportBookmarks onImport={(links) => dispatch(importLinks(links))} />
+      )}
     </div>
   );
 };
