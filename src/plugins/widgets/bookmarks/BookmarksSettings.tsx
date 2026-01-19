@@ -143,6 +143,18 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
       </label>
 
       <label>
+        Icon Size (px)
+        <input
+          type="number"
+          value={data.iconSize ?? 24}
+          onChange={(event) =>
+            setData({ ...data, iconSize: Number(event.target.value) })
+          }
+          min={1}
+        />
+      </label>
+
+      <label>
         <input
           type="checkbox"
           checked={data.wrap}
@@ -184,19 +196,17 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
         Use short names
       </label>
 
-      {data.shortNames && (
-        <label>
-          Maximum Text Length (Use 0 for no limit)
-          <input
-            type="number"
-            min="0"
-            value={data.maxTextLength || 0}
-            onChange={(event) =>
-              setData({ ...data, maxTextLength: Number(event.target.value) })
-            }
-          />
-        </label>
-      )}
+      <label>
+        Maximum Text Length (Use -1 to hide, 0 for no limit)
+        <input
+          type="number"
+          min="-1"
+          value={data.maxTextLength ?? 0}
+          onChange={(event) =>
+            setData({ ...data, maxTextLength: Number(event.target.value) })
+          }
+        />
+      </label>
     </div>
   );
 };

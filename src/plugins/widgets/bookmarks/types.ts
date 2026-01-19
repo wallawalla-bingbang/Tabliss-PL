@@ -18,6 +18,7 @@ export type Data = {
     | "_favicon_favicone";
   shortNames: boolean;
   maxTextLength: number;
+  iconSize: number;
   expandedFolders?: string[];
   rememberExpanded?: boolean;
 };
@@ -34,6 +35,7 @@ export const defaultData: Data = {
   iconProvider: "_default",
   shortNames: false,
   maxTextLength: 0,
+  iconSize: 24,
   expandedFolders: [],
   rememberExpanded: true,
 };
