@@ -196,6 +196,19 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
         Use short names
       </label>
 
+      {data.navigationStyle === "quick-links" && (
+        <label>
+          <input
+            type="checkbox"
+            checked={data.showNameUnderIcon}
+            onChange={(event) =>
+              setData({ ...data, showNameUnderIcon: event.target.checked })
+            }
+          />
+          Show name under icon
+        </label>
+      )}
+
       <label>
         Maximum Text Length (Use -1 to hide, 0 for no limit)
         <input

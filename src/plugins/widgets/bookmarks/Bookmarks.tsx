@@ -176,13 +176,13 @@ const Node: FC<NodeProps> = ({
         ) : iconProvider === "_favicon_google" ? (
           <img
             alt=""
-            src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize * 2}`}
+            src={`https://www.google.com/s2/favicons?domain=${domain}&sz=256`}
             style={iconStyle}
           />
         ) : iconProvider === "_favicon_favicone" ? (
           <img
             alt=""
-            src={`https://favicone.com/${domain}?s=${iconSize * 2}`}
+            src={`https://favicone.com/${domain}?s=256`}
             style={iconStyle}
           />
         ) : (
@@ -299,7 +299,7 @@ const Bookmarks: FC<Props> = ({ data = defaultData, setData }) => {
 
   return (
     <div
-      className={`Bookmarks ${data.navigationStyle}`}
+      className={`Bookmarks ${data.navigationStyle} ${data.showNameUnderIcon ? "show-names-under" : ""}`}
       style={{
         maxWidth: data.maxWidth + "em",
         maxHeight: data.maxHeight + "em",

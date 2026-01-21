@@ -16,6 +16,7 @@ export type Data = {
     | "_favicon_duckduckgo"
     | "_favicon_google"
     | "_favicon_favicone";
+  showNameUnderIcon?: boolean;
   shortNames: boolean;
   maxTextLength: number;
   iconSize: number;
@@ -33,6 +34,7 @@ export const defaultData: Data = {
   navigationStyle: "drill-down",
   columns: 1,
   iconProvider: "_default",
+  showNameUnderIcon: false,
   shortNames: false,
   maxTextLength: 0,
   iconSize: 24,
